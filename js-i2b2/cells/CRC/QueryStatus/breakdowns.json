@@ -1,0 +1,158 @@
+{
+  "INTERNAL_SUMMARY": {
+    "SUMMARY": true
+  },
+  "PATIENT_COUNT_XML": {
+    "COUNT": true
+  },
+  "PATIENT_COUNT_SHRINE_XML": {
+    "COUNT": true
+  },
+  "PATIENT_SITE_COUNT_SHRINE_XML": {
+    "SHRINESITES": true,
+    "SHRINESITESDOWNLOAD": true,
+    "PATIENTCOUNTMAP": true
+  },
+  "PATIENT_GENDER_COUNT_XML": {
+    "BARS": true,
+    "PIECHART": true,
+    "TABLE": true,
+    "DOWNLOAD": true
+  },
+  "PATIENT_SEX_COUNT_SHRINE_XML": {
+    "BARS": true,
+    "PIECHART": true,
+    "TABLE": true,
+    "DOWNLOAD": true
+  },
+  "PATIENT_VITALSTATUS_COUNT_XML": {
+    "BARS": true,
+    "TABLE": true,
+    "DOWNLOAD": true
+  },
+  "PATIENT_VITALSTATUS_COUNT_SHRINE_XML": {
+    "BARS": true,
+    "PIECHART": true,
+    "TABLE": true,
+    "DOWNLOAD": true
+  },
+  "PATIENT_RACE_COUNT_XML": {
+    "BARS": true,
+    "TABLE": true,
+    "DOWNLOAD": true
+  },
+  "PATIENT_RACE_COUNT_SHRINE_XML": {
+    "BARS": true,
+    "PIECHART": true,
+    "TABLE": true,
+    "DOWNLOAD": true
+  },
+  "PATIENT_AGE_COUNT_XML": {
+    "BARS": true,
+    "TABLE": true,
+    "DOWNLOAD": true
+  },
+  "PATIENT_AGE_COUNT_SHRINE_XML": {
+    "BARS": true,
+    "LINECHART": true,
+    "PIECHART": true,
+    "TABLE": true,
+    "DOWNLOAD": true
+  },
+  "PATIENT_LOS_XML": {
+    "BARS": true,
+    "TABLE": true,
+    "DOWNLOAD": true
+  },
+  "PATIENT_TOP20MEDS_XML": {
+    "BARS": true,
+    "TABLE": {
+      "forceInitialDisplay": true
+    },
+    "DOWNLOAD": true
+  },
+  "PATIENT_DIAG3_COUNT_SHRINE_XML": {
+    "TABLEBARCHART": true,
+    "TABLE":true,
+    "DOWNLOAD": true
+  },
+  "PATIENT_INOUT_XML": {
+    "BARS": true,
+    "TABLE": true,
+    "DOWNLOAD": true
+  },
+   "PATIENT_PATHOGEN_TIMELINE_SHRINE_XML": {
+    "TABLE": true,
+    "DOWNLOAD": true,
+    "PATHOGENTIMELINE": true
+  },
+  "PATIENT_ZIP_COUNT_SHRINE_XML": {
+    "TABLE": true,
+    "MULTIZIPCODEMAP": {
+      "clickBox": {
+        "options": {
+          "closeButton": "true",
+          "className": "onclick-box",
+          "autoClose": false,
+          "closeOnClick": false
+        },
+        "template": "<b>[{{text}}] - {{name}}</b><br/>{{display}} patients"
+      },
+      "hoverBox": {
+        "position": "topright",
+        "className": "onhover-box",
+        "default": "<h4>Patient Count</h4>Hover over an area",
+        "template": "<h4>Patient Count</h4><div><b>{{name}}</b></div><div>Zip Code: {{zipcode}}</div><span>{{display}} patients</span>"
+      },
+      "legendBox": {
+        "position": "bottomright",
+        "options": {},
+        "templates": {
+          "root": "<div class='map-title'><h4>Patient Count</h4></div><div class='map-entries'><div>{{entries}}</div></div>",
+          "auto": "<div data-color='{{color}}'><i style='background:{{color}}'></i><span>{{~min|2}}&ndash;{{~max|2}}</span></div>",
+          "min-max": "<div data-color='{{color}}'><i style='background:{{color}}'></i><span>{{~min}}&ndash;{{~max}}</span></div>",
+          "no-min": "<div data-color='{{color}}'><i style='background:{{color}}'></i><span>&lt;{{~max}}</span></div>",
+          "no-max": "<div data-color='{{color}}'><i style='background:{{color}}'></i><span>{{~min}}+</span></div>"
+        }
+      },
+      "map": {
+        "tiles": "http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png?key=cb1_2o4j_1_797191462edf1a1202ec07af",
+        "labelTiles": "https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png?key=cb1_2o4j_1_797191462edf1a1202ec07af",
+        "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a>, &copy; <a href=\"https://carto.com/attributions\">CARTO</a>",
+        "maxZoom": 18,
+        "aggKeyName": "aggKey",
+        "colors": [
+          {"color": "#d73027"},
+          {"color": "#f46d43"},
+          {"color": "#fdae61"},
+          {"color": "#fee090"},
+          {"color": "#ffffbf"},
+          {"color": "#e0f3f8"},
+          {"color": "#abd9e9"},
+          {"color": "#74add1"},
+          {"color": "#4575b4"}
+        ],
+        "styles": {
+          "norm": {
+            "weight": 1,
+            "opacity": 1,
+            "color": "#000",
+            "fillOpacity": 0.25
+           },
+          "hover": {
+            "weight": 3,
+            "_dashArray": "4,6",
+            "color": "#F00",
+            "fillOpacity": 0.5
+          }
+        }
+      }
+    }
+  },
+  "PATIENT_NIH_ENROLLMENT_SHRINE_XML": {
+    "TABLE": true,
+    "NIHENROLLTABLE": true,
+    "NIHENROLLCSV": true,
+    "DOWNLOAD": true
+  }
+}

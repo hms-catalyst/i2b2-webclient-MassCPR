@@ -1,0 +1,210 @@
+/* Set a style for all buttons */
+#PM-login-modal button {
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+#PM-login-modal button:hover {
+    opacity: 0.8;
+}
+
+#PM-login-modal button.disabled {
+    cursor: not-allowed !important;
+    pointer-events: all !important;
+}
+
+/* Center the image and position the close button */
+#PM-login-modal .imgcontainer {
+    text-align: center;
+    margin: 14px 0 0 0;
+    position: relative;
+    padding: 2rem 0;
+}
+
+#PM-login-modal .description {
+    padding: 0 3rem 2rem 3rem;
+    text-align: justify;
+}
+
+#PM-login-modal img.logo {
+    width: 80%;
+}
+
+#PM-login-modal .container {
+    padding: 16px;
+}
+
+#PM-login-modal .form-group label {
+    margin-bottom: 8px;
+}
+
+#PM-login-modal .classic {
+    padding: 15px 16px 16px 0px;
+}
+
+#PM-login-modal .header,
+#PM-login-modal .footer {
+    background-color:#f1f1f1
+}
+
+#PM-login-modal .header {
+    border-bottom: 1px solid #CCCCCC;
+    font-weight: bold;
+    font-size: 15px;
+}
+#PM-login-modal .footer {
+    border-top: 1px solid #CCCCCC;
+}
+
+#PM-login-modal .login-host {
+    _display: none;
+}
+
+/* The Modal (background) */
+#PM-login-modal.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+    display: block !important;
+}
+
+/* Modal Content/Box */
+#PM-login-modal .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 25%; /* Could be more or less, depending on screen size */
+    min-width: 300px;
+    overflow: hidden;
+}
+
+
+#PM-login-modal .modal-footer div {
+    text-align: left;
+    width: 100%;
+}
+#PM-login-modal .classic {
+    padding: 14px 0 5px 0;
+}
+
+
+
+#PM-login-modal .login-button {
+    position: relative;
+    overflow: visible;
+    border: 1px solid transparent;
+    transition: all .25s ease-out;
+}
+#PM-login-modal .login-button:hover {
+    box-shadow: 0 0 0 .25rem var(--focus-shadow);
+}
+#PM-login-modal .login-button.clicked {
+    background-color: oklch(from var(--bs-btn-bg) calc(l + .15) c h);
+    border: 1px solid grey;
+}
+
+
+
+#PM-login-modal .sso-group {
+    margin: 1.3rem 2rem;
+}
+
+#PM-login-modal .sso-button.clicked::before,
+#PM-login-modal .login-button.clicked::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border: 2px solid rgb(from var(--focus-shadow) r g b / 65%);
+    border-radius: inherit;
+    animation: pulseOut 1s ease-out;
+    animation-iterate-count: 1;
+    opacity: 0;
+}
+
+@keyframes pulseOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.3);
+        opacity: 0;
+    }
+}
+
+#PM-login-modal .sso-button {
+    border: 1px solid grey;
+    padding: 0;
+    width: 100%;
+    position: relative;
+    margin-bottom: 0.5rem;
+    transition: all .25s ease-out;
+}
+
+#PM-login-modal .sso-button:hover,
+#PM-login-modal .sso-button:focus,
+#PM-login-modal .sso-button.clicked {
+    background-color: var(--treeview-hover-background);
+    border-color: var(--focus-border);
+    outline: 0;
+    box-shadow: 0 0 0 .25rem var(--focus-shadow);
+}
+#PM-login-modal .sso-button.clicked {
+    box-shadow: transparent !important;
+}
+
+#PM-login-modal .sso-button img {
+    height: 4.6em;
+    width: 4.6em;
+    float: left;
+    border-right: 1px solid grey;
+    border-bottom-left-radius: 2px;
+    border-top-left-radius: 2px;
+}
+
+#PM-login-modal .sso-button div {
+    width: 100%;
+    padding-left: 4.6em;
+    position: absolute;
+    margin:0;
+    top: 35%;
+}
+
+
+#PM-login-modal .showLoginPwd, #PM-login-modal .hideLoginPwd {
+    margin-left: 0.2em;
+    margin-top: 0.1em;
+}
+
+#PM-login-modal .input-group input {
+    margin-bottom: 0px;
+}
+
+#PM-login-modal .form-group {
+    margin-bottom: 14px;
+}
+
+/* Login password box (for disabling of password warning) */
+@font-face {
+    font-family: 'password' ;
+    font-display: block;
+    src: url('../../../../../assets/fonts/password.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../../../../../assets/fonts/password.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+#PM-login-modal .ignorePasswordMgrs {
+    font-family: password, sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+}

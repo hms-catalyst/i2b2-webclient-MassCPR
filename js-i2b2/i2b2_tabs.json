@@ -1,0 +1,48 @@
+{
+  "left-column": {
+    "content": [
+      {
+        "height":40,
+        "title":"Terms",
+        "componentName": "i2b2.ONT.view.nav"
+      },{
+        "type":"stack",
+        "content":[
+          {
+            "title":"Term Info",
+            "componentName": "i2b2.ONT.view.info"
+          }
+        ]
+      },{
+        "type":"stack",
+        "content":[
+          {
+            "title":"Previous Queries",
+            "componentName": "i2b2.CRC.view.history"
+          }
+        ]
+      }
+    ]
+  },
+  "right-column": {
+    "content":[
+      {
+        "type": "stack",
+        "height": 40,
+        "content":[
+          {
+            "height": 80,
+            "title":"Find Patients",
+            "componentName": "i2b2.CRC.view.QT"
+          },{
+            "title": "Query Status",
+            "componentName": "i2b2.CRC.view.QueryMgr"
+          },{
+            "title": "Analysis Tools",
+            "componentName": "i2b2.PLUGIN.view.list"
+          }
+        ]
+      }
+    ]
+  }
+}

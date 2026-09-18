@@ -1,0 +1,501 @@
+:root {
+    --drop-border-color: #c7c3bb;
+    --drop-width: 100%;
+    --drop-max-width: 100%;
+    --drop-min-width: 240px;
+    --text-main: #333;
+    --text-muted: #666;
+    --action-blue: #2d7dd2;
+    --action-blue-hover: #2469b0;
+
+    font-family: Arial, sans-serif;
+}
+
+/* ==========================================================================
+   Base layout and global element behavior
+   ========================================================================== */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    overflow: auto;
+}
+
+body {
+    background: #ffffff;
+    color: var(--text-main);
+    box-sizing: border-box;
+    padding: 1.5rem;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+
+body.working {
+    cursor: wait;
+}
+body.working .leaflet-grab {
+    cursor: progress;
+}
+
+
+/* ==========================================================================
+   Controls panel: flow, view switch, validation, dataset list, actions
+   ========================================================================== */
+.bivariate-controls {
+    padding: .85rem .95rem;
+    background-color: #fff;
+    border: 1px solid #d8d8d8;
+    border-radius: .35rem;
+    width: 100%;
+    margin: 0 0 .75rem 0;
+}
+
+.bivariate-controls-title {
+    margin: 0 0 .45rem 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #222;
+}
+
+.bivariate-controls-description {
+    margin: 0 0 .75rem 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    max-width: 1100px;
+    word-break: break-word;
+}
+
+.flow-hint {
+    margin: 0 0 .55rem 0;
+    font-size: .78rem;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: .28rem;
+    flex-wrap: wrap;
+}
+.flow-step {
+    font-weight: 500;
+}
+.flow-step.is-active {
+    font-weight: 700;
+    color: #374151;
+}
+.flow-dot {
+    color: #9ca3af;
+}
+
+.geo-filter-row {
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    margin: 0 0 .7rem 0;
+    flex-wrap: wrap;
+}
+.geo-filter-label {
+    font-size: .82rem;
+    font-weight: 700;
+    color: #1f2d3a;
+}
+.geo-view-switch {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid #d0d7df;
+    border-radius: .45rem;
+    padding: 2px;
+    background: #f9fbfd;
+}
+.geo-view-btn {
+    border: 0;
+    background: transparent;
+    color: #355e8b;
+    font-size: .82rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0 10px;
+    height: 28px;
+    line-height: 28px;
+    cursor: pointer;
+    border-radius: .35rem;
+}
+.geo-view-btn:hover {
+    color: #1e5e9d;
+    background: #eef4fb;
+    text-decoration: none;
+}
+.geo-view-btn.active {
+    color: #1f4f82;
+    background: #e8f1fb;
+    font-weight: 700;
+}
+.geo-view-btn:focus-visible {
+    outline: 2px solid #2d7dd2;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.view-helper-text {
+    margin: 0 0 .55rem 0;
+    font-size: .78rem;
+    color: #6b7280;
+}
+
+.bivariate-validation-msg {
+    margin: 0 0 .5rem 0;
+    padding: .5rem .6rem;
+    font-size: 0.875rem;
+    border-radius: .3rem;
+    display: none;
+}
+.bivariate-validation-msg.visible {
+    display: block;
+}
+.bivariate-validation-msg.error {
+    background-color: #ffebee;
+    border: 1px solid #ef5350;
+    color: #c62828;
+}
+
+.drop-list-box {
+    border: 1px solid #d6d6d6;
+    border-radius: .4rem;
+    background-color: #FFF;
+    overflow: hidden;
+}
+
+.drop-slot-row {
+    display: flex;
+    gap: .65rem;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.drop-slot-box {
+    flex: 1 1 320px;
+}
+
+.drop-slot-title {
+    padding: .38rem .55rem;
+    border-bottom: 1px solid #ececec;
+    background: #fafafa;
+    color: #374151;
+    font-size: .78rem;
+    font-weight: 700;
+}
+
+.drop-list-box,
+.bivariate-actions {
+    width: var(--drop-width);
+    max-width: var(--drop-max-width);
+    min-width: var(--drop-min-width);
+}
+
+.drop-list {
+    list-style: none;
+    margin: 0;
+    padding: .25rem 0;
+    min-height: 82px;
+    max-height: 86px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.drop-list-placeholder {
+    padding: .6rem;
+    color: #888;
+    font-style: italic;
+    text-align: center;
+}
+.drop-list-box:not(.empty) .drop-list-placeholder {
+    display: none;
+}
+.drop-list-box.empty .drop-list {
+    display: none;
+}
+.drop-list-box:not(.empty) .drop-list {
+    display: block;
+}
+
+.drop-list .dataset {
+    display: flex;
+    align-items: center;
+    min-height: 2.5em;
+    padding: .25rem .6rem;
+    margin: .2rem .4rem;
+    border: 1px solid var(--drop-border-color);
+    border-radius: .3rem;
+    background-color: #FFF;
+    cursor: default;
+}
+.drop-list .dataset.isSet {
+    border-color: #2e7d32;
+    background-color: #fff;
+}
+.drop-list .dataset .cohort-chip {
+    width: 9px;
+    height: 24px;
+    border-radius: 3px;
+    margin-right: .45rem;
+    flex-shrink: 0;
+}
+.drop-list .dataset .cohort-chip.cohort-a {
+    background: #f3b300;
+}
+.drop-list .dataset .cohort-chip.cohort-b {
+    background: #509dc2;
+}
+.drop-list .dataset .cohort-label {
+    font-size: .72rem;
+    font-weight: 700;
+    color: #4b5563;
+    margin-right: .42rem;
+    flex-shrink: 0;
+}
+.drop-list .dataset .slot-text {
+    flex: 1;
+    min-width: 0;
+    color: var(--text-main);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.drop-list .dataset:not(.isSet) .slot-text {
+    color: #888;
+    font-style: italic;
+}
+
+.bivariate-list-remove {
+    flex-shrink: 0;
+    width: 1.5em;
+    height: 1.5em;
+    padding: 0;
+    margin-left: .35rem;
+    border: 1px solid var(--drop-border-color);
+    border-radius: .25rem;
+    background: #fff;
+    color: #666;
+    font-size: 1.2em;
+    line-height: 1;
+    cursor: pointer;
+}
+.bivariate-list-remove:hover {
+    background: #ffebee;
+    color: #c62828;
+    border-color: #ef5350;
+}
+
+.bivariate-actions {
+    margin-top: .35rem;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.bivariate-submit-btn {
+    padding: .4rem 1rem;
+    font-size: .86rem;
+    font-weight: 600;
+    border: 1px solid var(--drop-border-color);
+    border-radius: .4rem;
+    background-color: var(--action-blue);
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: .38rem;
+}
+.bivariate-submit-btn:hover:not(:disabled) {
+    background-color: var(--action-blue-hover);
+}
+.bivariate-submit-btn:disabled {
+    background-color: #9e9e9e;
+    cursor: not-allowed;
+}
+.bivariate-submit-btn .btn-spinner {
+    width: 0;
+    height: 0;
+    border: 0;
+    visibility: hidden;
+}
+.bivariate-submit-btn.is-loading .btn-spinner {
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(255,255,255,.5);
+    border-top-color: #fff;
+    border-radius: 50%;
+    visibility: visible;
+    animation: map-spin .8s linear infinite;
+}
+
+/* ==========================================================================
+   Map area: zoom toolbar, container, loading overlay
+   ========================================================================== */
+.map-section {
+    padding: 0;
+    margin: .35rem 0 0 0;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #d8d8d8;
+    border-radius: .35rem;
+    background: #fff;
+}
+
+.map-section .zoom-levels {
+    background-color: #fff;
+    border-bottom: 1px solid #e7e7e7;
+    padding: .45rem .65rem;
+    min-height: 1.5rem;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+#map-target {
+    background: #e8edf1;
+    width: 100%;
+    height: clamp(520px, 60vh, 600px);
+    margin: 0;
+    position: relative;
+    z-index: 0;
+    box-sizing: border-box;
+    border-radius: 0 0 .35rem .35rem;
+}
+.map-loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    background: rgba(246, 245, 242, 0.75);
+    color: #1f2d3a;
+    font-size: .86rem;
+    font-weight: 600;
+    z-index: 700;
+}
+.map-loading.hidden {
+    display: none;
+}
+.map-loading-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #a9b6c2;
+    border-top-color: #2d7dd2;
+    border-radius: 50%;
+    animation: map-spin .8s linear infinite;
+}
+@keyframes map-spin {
+    to { transform: rotate(360deg); }
+}
+
+.i2b2DropTarget.dragging {
+    background-color: lightyellow !important;
+}
+
+/* ==========================================================================
+   Map controls and Leaflet overlays (zoom links, hover, legend)
+   ========================================================================== */
+ul.zoom-links {
+    display: inline-block;
+    padding: 0;
+    margin: 0 .5rem;
+}
+
+ul.zoom-links li { display: inline; }
+
+.zoom-label {
+    font-weight: bold;
+}
+span.zoom-link {
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+span.zoom-link.selected,
+span.zoom-link:hover {
+    border-bottom: 1px solid;
+}
+
+
+ul.zoom-links li:after {
+    content: " ";
+    letter-spacing: 1em;
+    background: center center no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwAAADsABataJCQAAABl0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC4xMkMEa+wAAAAnSURBVBhXY/Dz89MA4sNA/B9Ka4AEYQIwfBgkiCwAxjhVopnppwEApxQqhnyQ+VkAAAAASUVORK5CYII=);
+}
+
+
+.hoverinfo-box {
+    background-color: #FFF;
+    padding: .3em 1em .5em 1em;
+    border-radius: .8em;
+    border: 1px solid #ccc;
+    min-width: 18em;
+    max-width: 24em;
+    word-break: break-word;
+    transition: opacity .18s ease-in;
+    pointer-events: none !important;
+}
+
+.hoverinfo-box h4 {
+    font-size: 1.16em;
+    margin: 0 0 .4em 0;
+}
+.hoverinfo-box .geo-line {
+    margin-bottom: .35rem;
+    color: #374151;
+}
+
+.hoverinfo-box div {
+    text-align: left;
+}
+
+.hoverinfo-box .counts {
+    float: right;
+    margin-left: 1em;
+    font-weight: bold;
+}
+
+
+.legend-box {
+    background: #FFFFFF;
+    border-radius: .8em;
+    padding: 4px 4px 0 4px;
+    border: 1px solid #ccc;
+    opacity: 1;
+    transition: opacity .5s;
+}
+
+/* ==========================================================================
+   Responsive adjustments
+   ========================================================================== */
+@media (max-width: 900px) {
+    body {
+        padding: .35rem;
+    }
+    .drop-list-box,
+    .bivariate-actions {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.legend-box.hidden {
+    opacity: 0;
+}
+
+
+/* ==========================================================================
+   Leaflet overlay fade helpers
+   ========================================================================== */
+.leaflet-overlay-pane {
+    transition: opacity .5s;
+}
+.leaflet-overlay-pane.hidden {
+    opacity: 0;
+}

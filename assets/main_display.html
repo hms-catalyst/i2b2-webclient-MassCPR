@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<body>
+<div id="top-bar">
+    <table id="topBarTable">
+        <tr>
+            <td class="logo">
+                <img src="../assets/images/MassCPR_Network_Logo.png" alt="MassCPR logo" class="logo">
+            </td>
+            <td>
+                <div id="headerOptions" class="fs-4 mb-3">
+                    <a href="#" onclick="window.open('help/index.html','_blank', 'toolbar=no,resizable=yes,scrollbars=yes,height=490,width=940', false)" title="Help Page"><i class="bi bi-question-circle"></i></a>
+                    <div class="dropdown">
+                        <a href="#" onclick="i2b2.PM.setUserAccountInfo()" title="Account Information" data-bs-toggle="dropdown"><i class="bi bi-person-circle"></i></a>
+                        <ul id="userInfo" class="dropdown-menu">
+                            <li>
+                                <h6 class="dropdown-header">User</h6>
+                            </li>
+                            <li class="dropdown-item static">
+                                <span class="user"></span>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="dropdown-item static" style="display:none;">
+                                <span class="project"></span>
+                            </li>
+                            <li class="dropdown-item static" style="display:none;">
+                                <div class="userRole"></div>
+                            </li>
+                            <li class="dropdown-item static" style="display:none;">
+                                <div class="versionData">
+                                    <div class="clientVersion">
+                                        <div>Version</div>
+                                        <div class="versionNum"></div>
+                                    </div>
+                                    <div class="serverVersion">
+                                        <div>Server</div>
+                                        <div class="serverVersionNum"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="center">
+                                <a href="Javascript:void(0)" title="Query Options" class="queryOptions" onclick="i2b2.CRC.view.QT.showOptions();">Query Options</a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="center">
+                                <a href="#" title="Message Log" class="messageLogLnk" onclick="i2b2.hive.msgSniffer.show();">Message Log</a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li class="center">
+                                <button class="logout btn btn-primary btn-sm" onClick="i2b2.PM.doLogout()">Logout</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="goldenLayout" id="goldenLayoutId1"></div>
+<div class="goldenLayout goldenLayoutCol" id="goldenLayoutId2"></div>
+
+<div class="toast position-fixed top-0 end-0 p-3" data-bs-delay="10000" role="alert" aria-live="assertive" aria-atomic="true" >
+    <div class="toast-header">
+        <strong class="me-auto header-title">[i2b2-url] says:</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        <p>An error has occurred.</p>
+        <div>Click  <a href="#" title="Message Log" class="messageLogLnk" onclick="i2b2.hive.msgSniffer.show();">here</a>
+            to view the message log for details.</div>
+    </div>
+</div>
+
+<div id="footer-bar"></div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bivariate Choropleth Zipcode Map</title>
+    <script type="text/javascript" src="js/i2b2-loader.js" ></script>
+    <script type="text/javascript" src="js/main.js?v=20260227" ></script>
+    <link rel="stylesheet" type="text/css" href="main.css?v=20260227" />
+    <script type="text/javascript" src="js/handlebars-v4.7.8.js" ></script>
+    <script type="text/javascript" src="js/leaflet/1.9.4/leaflet.js" ></script>
+    <link rel="stylesheet" type="text/css" href="js/leaflet/1.9.4/leaflet.css" />
+</head>
+<body>
+    <div class="bivariate-controls">
+        <h3 class="bivariate-controls-title">Bivariate ZIP Code Map</h3>
+        <p class="bivariate-controls-description">Drag and drop the <strong>master query</strong>, <strong>Results of…</strong>, or the individual <strong>Demographic Distribution by Zip Code</strong> result from Previous Queries. Add one query per slot, then click <strong>Load map</strong>. Use the geography switch to toggle between ZIP5, ZIP3, and State views.</p>
+        <div class="flow-hint" id="flow-hint" aria-live="polite">
+            <span class="flow-step is-active">1. Drop Query 1</span>
+            <span class="flow-dot" aria-hidden="true">•</span>
+            <span class="flow-step">2. Drop Query 2</span>
+            <span class="flow-dot" aria-hidden="true">•</span>
+            <span class="flow-step">3. Choose View</span>
+            <span class="flow-dot" aria-hidden="true">•</span>
+            <span class="flow-step">4. Load map</span>
+        </div>
+        <div class="geo-filter-row">
+            <span class="geo-filter-label">View:</span>
+            <div class="geo-view-switch" id="geo-view-switch" role="tablist" aria-label="Geography view">
+            <button type="button" class="geo-view-btn active" data-view="zip5" title="5-digit ZIP view" role="tab" aria-selected="true">ZIP5</button>
+            <button type="button" class="geo-view-btn" data-view="zip3" title="3-digit ZIP view" role="tab" aria-selected="false">ZIP3</button>
+            <button type="button" class="geo-view-btn" data-view="state" title="State view" role="tab" aria-selected="false">State</button>
+            </div>
+        </div>
+        <div class="view-helper-text" id="view-helper-text">Detailed ZIP-level map (regional coverage).</div>
+        <div class="bivariate-validation-msg" id="bivariate-validation-msg" role="alert" aria-live="polite"></div>
+        <div class="drop-slot-row">
+            <div class="drop-list-box empty drop-slot-box" id="bivariate-dataset1-drop" data-slot-id="dataset1" title="Drop query for Cohort 1">
+                <div class="drop-slot-title">Query 1 (Cohort 1)</div>
+                <ul class="drop-list" id="bivariate-dataset1-list"></ul>
+                <div class="drop-list-placeholder">Drop Query 1 here</div>
+            </div>
+            <div class="drop-list-box empty drop-slot-box" id="bivariate-dataset2-drop" data-slot-id="dataset2" title="Drop query for Cohort 2">
+                <div class="drop-slot-title">Query 2 (Cohort 2)</div>
+                <ul class="drop-list" id="bivariate-dataset2-list"></ul>
+                <div class="drop-list-placeholder">Drop Query 2 here</div>
+            </div>
+        </div>
+        <div class="bivariate-actions">
+            <button type="button" class="bivariate-submit-btn" id="load-map-btn" disabled title="Load map after dropping exactly 2 breakdowns">
+                <span class="btn-spinner" aria-hidden="true"></span>
+                <span class="btn-label">Load map</span>
+            </button>
+        </div>
+    </div>
+    <div class="map-section">
+        <div class="zoom-levels">
+            <span class="zoom-label">Zoom:</span><ul id="zoom-list" class="zoom-links"></ul>
+        </div>
+        <div id="map-target">
+            <div id="map-loading" class="map-loading hidden" aria-live="polite" aria-busy="true">
+                <span class="map-loading-spinner" aria-hidden="true"></span>
+                <span class="map-loading-text">Loading map data...</span>
+            </div>
+        </div>
+    </div>
+    <svg height="8" width="8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <pattern id="error-pattern" patternUnits="userSpaceOnUse" width="8" height="8">
+                <image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc4JyBoZWlnaHQ9JzgnPgogIDxyZWN0IHdpZHRoPSc4JyBoZWlnaHQ9JzgnIGZpbGw9JyNmZmYnLz4KICA8cGF0aCBkPSdNMCAwTDggOFpNOCAwTDAgOFonIHN0cm9rZS13aWR0aD0nMC41JyBzdHJva2U9JyNhYWEnLz4KPC9zdmc+Cg==" x="0" y="0" width="8" height="8"></image>
+            </pattern>
+        </defs>
+    </svg>
+</body>
+</html>

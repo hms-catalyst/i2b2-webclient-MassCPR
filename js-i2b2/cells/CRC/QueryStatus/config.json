@@ -1,0 +1,145 @@
+{
+  "displayComponents": {
+    "SUMMARY": {
+      "source": "Summary/Summary.js",
+      "CSS": "Summary/Summary.css",
+      "alwaysShow": true,
+      "noFrameTemplate": true,
+      "notInReport": true,
+      "showQueryButton": true
+    },
+    "COUNT": {
+      "source": "Count/Count.js",
+      "CSS": "Count/Count.css",
+      "class": "patient-count",
+      "alwaysShow": true,
+      "noFrameTemplate": true
+    },
+    "SHRINESITES": {
+      "name": "Table Summary",
+      "source": "ShrineSites/ShrineSites.js",
+      "CSS": "ShrineSites/ShrineSites.css",
+      "iconClass": "bi bi-table",
+      "alwaysShow": true
+    },
+    "BARS": {
+      "name": "Bar Chart",
+      "source": "BarGraph/BarGraph.js",
+      "CSS": "BarGraph/BarGraph.css",
+      "iconClass": "bi bi-bar-chart-line",
+      "default": true,
+      "displayOrder": 1,
+      "class": "bargraph"
+    },
+    "PIECHART": {
+      "name": "Pie Chart",
+      "source": "PieChart/PieChart.js",
+      "CSS": "PieChart/PieChart.css",
+      "iconClass": "bi bi-pie-chart",
+      "displayOrder": 2
+    },
+    "TABLE": {
+      "name": "Table Summary",
+      "source": "Table/Table.js",
+      "CSS": "Table/Table.css",
+      "iconClass": "bi bi-table",
+      "displayOrder": 100,
+      "displayForUnregistered": true
+    },
+    "TABLEBARCHART": {
+      "name": "Table Bar Chart",
+      "source": "TableBarChart/TableBarChart.js",
+      "CSS": "TableBarChart/TableBarChart.css",
+      "iconClass": "bi bi-bar-chart-steps",
+      "displayOrder": 10,
+      "displayForUnregistered": true,
+      "notInReport": true
+    },
+    "DATAREQUESTSUPER": {
+      "name": "Data Request",
+      "source": "DataRequestSuper/DataRequestSuper.js",
+      "CSS": "DataRequestSuper/DataRequestSuper.css",
+      "iconClass": "bi bi-table",
+      "displayOrder": 100,
+      "displayForUnregistered": false,
+      "superModule": {
+        "capture": ["/^RPDO_/", "/_REQUEST$/"]
+      }
+    },
+    "DOWNLOAD": {
+      "name": "CSV Download",
+      "source": "Download/Download.js",
+      "iconClass": "bi bi-filetype-csv",
+      "displayOrder": 500,
+      "displayForUnregistered": true,
+      "notInReport": true
+    },
+    "SHRINESITESDOWNLOAD": {
+      "name": "CSV Download",
+      "source": "ShrineSitesDownload/Download.js",
+      "iconClass": "bi bi-filetype-csv",
+      "displayOrder": 500,
+      "notInReport": true
+    },
+    "MULTIZIPCODEMAP": {
+      "name": "Map View",
+      "source": "MultiZipcodeMap/MultiZipcodeMap.js",
+      "CSS": "MultiZipcodeMap/MultiZipcodeMap.css",
+      "iconClass": "bi bi-globe2"
+    },
+    "PATIENTCOUNTMAP": {
+      "name": "Map Viewer",
+      "source": "PatientCountMap/PatientCountMap.js",
+      "CSS": "PatientCountMap/PatientCountMap.css",
+      "iconClass": "bi bi-globe2",
+      "displayOrder": 150,
+      "notInReport": true
+    },
+    "LINECHART": {
+      "name": "Line Chart",
+      "source": "LineChart/LineChart.js",
+      "CSS": "LineChart/LineChart.css",
+      "iconClass": "bi bi-graph-up",
+      "displayOrder": 3,
+      "class": "linechart",
+      "displayForUnregistered": false
+    },
+    "PATHOGENTIMELINE": {
+      "name": "Pathogen Timeline",
+      "source": "PathogenTimeline/PathogenTimeline.js",
+      "CSS": "PathogenTimeline/PathogenTimeline.css",
+      "iconClass": "bi-graph-up-arrow",
+      "displayOrder": 3,
+      "class": "pathogen-timeline",
+      "displayForUnregistered": false
+    },
+    "NIHENROLLTABLE": {
+      "name": "Enrollment Form",
+      "source": "NihEnrollTable/Table.js",
+      "CSS": "NihEnrollTable/Table.css",
+      "iconClass": "bi bi-grid-3x3",
+      "displayOrder": 1
+    },
+    "NIHENROLLCSV": {
+      "name": "Enrollment Form CSV",
+      "source": "NihEnrollCsv/Download.js",
+      "iconClass": "bi bi-filetype-csv",
+      "displayOrder": 100,
+      "notInReport": true
+    }
+  },
+  "displayOrder": [
+    "INTERNAL_SUMMARY",
+    "PATIENT_COUNT_XML",
+    "PATIENT_COUNT_SHRINE_XML",
+    "PATIENT_SITE_COUNT_SHRINE_XML"
+  ],
+  "haltPollingOnStatus": [
+    "COMPLETED",
+    "FINISHED",
+    "ERROR",
+    "TIMEOUT"
+  ],
+  "hideVisualizationsOn": [],
+  "realtimePolling": true
+}
